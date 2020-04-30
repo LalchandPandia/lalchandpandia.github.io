@@ -1,7 +1,3 @@
-body {
-    margin: 60px auto;
-    
-}
 .container {
   
   max-width: 70%;
@@ -9,22 +5,16 @@ body {
   flex-direction: row;
   height: 80%;
 }
-.pic{
-  
-  margin-left: 25px;
-  max-width: 50%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height:auto; 
-  overflow:hidden;
+
+.image {
+   max-width:96px; height:auto; overflow:hidden;
 
 }
+
 .bio {
   overflow:auto;
   max-width: 80%;
-  margin: 60px auto 60px 25px;
+  margin: auto auto 60px 25px;
 
 }
 
