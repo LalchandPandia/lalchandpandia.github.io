@@ -1,21 +1,87 @@
 .container {
-  
-  max-width: 70%;
-  display: flex;
-  flex-direction: row;
-  height: 80%;
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
 }
 
-.image {
-   max-width:96px; margin: auto 10px; overflow:hidden;
-
+/* Left sidebar */
+.left-portion {
+    width: 220px;            /* fixed width */
+    position: fixed;         /* always visible */
+    top: 2rem;               /* distance from top */
+    left: 2rem;              /* distance from left */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.bio {
-  overflow:auto;
-  max-width: 80%;
-  margin: auto auto 60px 25px;
+.left-portion .pic img {
+    width: 100%;
+    border-radius: 8px;
+}
 
+.left-portion .contact {
+    margin-top: 1rem;
+    text-align: center;
+}
+.left-portion p a {
+    /* This prevents the icon and text within the link from splitting */
+    white-space: nowrap; 
+}
+
+/* Main content */
+.main-content {
+    margin-left: 260px; /* leave space for fixed sidebar */
+    flex: 1;
+}
+
+.tabs-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab-link {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    color: #333;
+    border-bottom: 3px solid transparent;
+    font-weight: bold;
+}
+
+.tab-link.active {
+    border-color: #333;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 
+
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .left-portion {
+        position: relative;
+        width: 100%;
+        top: auto;
+        left: auto;
+        margin-bottom: 2rem;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    .tabs-nav {
+        flex-wrap: wrap;
+    }
+}

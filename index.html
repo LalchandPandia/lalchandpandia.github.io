@@ -5,26 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- 83% allows portrait orientation to get the two-column format on an iPad (83% < 768/920) -->
     <meta name="viewport" content="width=device-width,initial-scale=0.83">
+    <link rel="stylesheet" href="css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Lalchand Pandia's Homepage</title>
+
 </head>
 
 <body>
+   <!-- <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </nav>
+    -->
 	<div class="container">
         <div class="left-portion">
         	<div class="pic">
                 <img class="image" src =" docs/myimage.jpg" />
             </div>
-                <div class="contact">
-                    <a href = mailto:lcpandia@uchicago.edu>Email</a><br>
             		<!--<a href = mailto:lcpandia@gmail.com>Email</a><br>-->
-            		<a href ="docs/Lalchand_Pandia_CV.pdf">[CV]</a>
-                </div>
-            
+            <p>
+                <a href = mailto:lcpandia@uchicago.edu>Email</a><br>	     
+                <a href ="docs/LalchandPandiaIndustryCV.pdf">CV</a>
+                <a href="https://scholar.google.com/citations?user=HyIZ1okAAAAJ&hl=en" style="margin:1em;"><i class="ai ai-google-scholar"></i>Google Scholar</a>              
+                <a href="https://github.com/LalchandPandia"> <i class="fab fa-github"></i>GitHub</a>
+                <a href="https://www.linkedin.com/in/lalchand-pandia-66a58556/"><i class="fab fa-linkedin"></i>LinkedIn</a>
+            </p>
         </div>
+            
+        
+        <!--
         <div class="bio" style='text-align:justify'>
          		<p>
-                I am a 3rd year PhD student in computer science at the University of Chicago. I am fortunate to be advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>
+                I am a PhD student in computer science at the University of Chicago. I am fortunate to be advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>
                  </p> 
                  <p> I also work closely with <a href="https://kanishka.website/"> Dr. Kanishka Misra.</a></p>
                 <p>My research focus is on data-efficiency for learning i.e. selecting the best small subsets of data for training which not only maintains accuracy but also covers data diversity. I also work on how new concepts are encoded in LLM during their training.</p>
@@ -41,7 +57,97 @@
 
 
         </div>
+    -->
+    <div class="main-content">
+        <nav class="tabs-nav">
+            <a href="#" class="tab-link active" data-tab="about">About</a>
+            <a href="#" class="tab-link" data-tab="publications">Publications</a>
+            <a href="#" class="tab-link" data-tab="blog">Blog</a>
+        </nav>
+        <div class="tab-content" id="about">
+            <h2>About</h2>
+            <p>I am a PhD student in computer science at the University of Chicago. I am fortunate to be advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>.</p>
+            <p>I also work closely with <a href="https://kanishka.website/">Dr. Kanishka Misra</a>.</p>
+            <p>My research focus is on data-efficiency for learning i.e. selecting the best small subsets of data for training which not only maintains accuracy but also covers data diversity. I also work on how new concepts are encoded in LLM during their training.</p>
+            <p>Prior to joining UChicago, I was a software engineer in the industry, focusing on Distributed File Systems.</p>
+            <p>I did my Masters in Computer Science from <a href="http://www.cse.iitk.ac.in/">IIT, Kanpur</a>.</p>
+        </div>
+        <!--<section id="about">
+            <h2>About</h2>
+            <p>
+                I am a PhD student in computer science at the University of Chicago. I am fortunate to be advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>
+                 </p> 
+                 <p> I also work closely with <a href="https://kanishka.website/"> Dr. Kanishka Misra.</a></p>
+                <p>My research focus is on data-efficiency for learning i.e. selecting the best small subsets of data for training which not only maintains accuracy but also covers data diversity. I also work on how new concepts are encoded in LLM during their training.</p>
+                <p>
+                    Prior to joining UChicago, I was a software engineer in the industry, focusing on Distributed File Systems.
+                </p>
+            	 <p>I did my Masters in Computer Science  from <a href="http://www.cse.iitk.ac.in/">IIT, Kanpur</a>. 
+                </p>
+          </section>
+        -->
+        <div class="tab-content" id="publications">
+            <h2>Publications</h2>
+            <ul>
+                <li>Sorting through the noise: Testing robustness of information processing in pre-trained language models
+                    <a href="https://arxiv.org/abs/2109.12393">[pdf]</a> Accepted at EMNLP 2021
+                </li>
+                <li>Pragmatic competence of pre-trained language models through the lens of discourse connectives
+                    <a href="https://arxiv.org/abs/2109.12951">[pdf]</a> Accepted at CoNLL 2021
+                </li>
+            </ul>
+        </div>
+        <!--<section id="publications">
+            <h2>Publications</h2>
+            <ul>
+                <li>Sorting through the noise: Testing robustness of information processing in pre-trained language models
+                    <a href ="https://arxiv.org/abs/2109.12393">[pdf]</a> Accepted at EMNLP 2021</li>
+                <li>Pragmatic competence of pre-trained language models through the lens of discourse connectives<a href="https://arxiv.org/abs/2109.12951">[pdf]</a> Accepted at CoNLL 2021
+                </li>
+
+                </ul>
+          </section>
+        -->
+        <div class="tab-content" id="blog">
+            <h2>Blog</h2>
+            <p>Occasional posts about data-centric AI, learning dynamics, and model training.</p>
+        </div>
+        <!--
+          <section id="blog">
+            <h2>Blog</h2>
+            <p>Occasional posts about data-centric AI, learning dynamics, and model training.</p>
+          </section>
+        -->
+          
+
+        </div>
+    
         
     </div>
+    <script>
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        // Show About by default
+        document.getElementById('about').classList.add('active');
+        
+        tabLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+        
+                // deactivate all links
+                tabLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+        
+                // hide all content
+                tabContents.forEach(c => c.classList.remove('active'));
+        
+                // show selected content
+                const target = link.dataset.tab;
+                document.getElementById(target).classList.add('active');
+            });
+        });
+        </script>
 
 </body>
+</html>
