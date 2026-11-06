@@ -10,6 +10,24 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Lalchand Pandia's Homepage</title>
 
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$','$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+        window.addEventListener('load', (event) => {
+            document.querySelectorAll("mjx-container").forEach(function(x){
+                x.parentElement.classList += 'has-jax'})
+        });
+    </script>
+
 </head>
 
 <body>
@@ -51,6 +69,10 @@
                 </p>
                 <h2>Publications</h2>
                 <ul>
+                    <li>SAFE-DRIFT: Data Selection for Supervised Fine-tuning with Controllable Off-Target Drifts</li>
+                    Accepted at Neurips 2026
+                    <li>Rethinking Data Selection: The Importance of Coverage over Difficulty in LLM Fine-Tuning</li>
+                    <a href="https://arxiv.org/abs/2611.07323">[pdf]</a> Accepted at DATA-FM workshop @ ICLR 2026
                     <li>Sorting through the noise: Testing robustness of information processing in pre-trained language models</li>
                     <a href ="https://arxiv.org/abs/2109.12393">[pdf]</a> Accepted at EMNLP 2021
                     <li>Pragmatic competence of pre-trained language models through the lens of discourse connectives</li><a href="https://arxiv.org/abs/2109.12951">[pdf]</a> Accepted at CoNLL 2021
@@ -62,7 +84,7 @@
         <nav class="tabs-nav">
             <a href="#" class="tab-link active" data-tab="about">About</a>
             <a href="#" class="tab-link" data-tab="publications">Publications</a>
-            <a href="#" class="tab-link" data-tab="blog">Blog</a>
+            <a href="blog/index.html" class="tab-link" data-tab="blog">Blog</a>
         </nav>
         <div class="tab-content" id="about">
             <h2>About</h2>
@@ -89,6 +111,12 @@
         <div class="tab-content" id="publications">
             <h2>Publications</h2>
             <ul>
+            	<li>SAFE-DRIFT: Data Selection for Supervised Fine-tuning with Controllable Off-Target Drifts
+                    Accepted at Neurips 2026
+                </li>
+                <li>Rethinking Data Selection: The Importance of Coverage over Difficulty in LLM Fine-Tuning
+                    <a href="https://arxiv.org/abs/2611.07323">[pdf]</a> Accepted at DATA-FM workshop @ ICLR 2026
+                </li>
                 <li>Sorting through the noise: Testing robustness of information processing in pre-trained language models
                     <a href="https://arxiv.org/abs/2109.12393">[pdf]</a> Accepted at EMNLP 2021
                 </li>
@@ -111,7 +139,16 @@
         <div class="tab-content" id="blog">
             <h2>Blog</h2>
             <p>Occasional posts about data-centric AI, learning dynamics, and model training.</p>
+            <article class="post-entry">   
+                <header class="entry-header">    
+                    <h2>Coverage</h2>  
+                </header>  
+                <footer class="entry-footer">Date: Nov 1, 2025  |  Estimated Reading Time: 10 min  |  Author: Lalchand Pandia</footer>
+                <a class="entry-link" aria-label="Data Coverage" href="blog/posts/data-coverage.html"></a>
+                <a class="entry-link" aria-label="post link to Data Coverage" href="blog/posts/data-coverage.html"></a>
+            </article>
         </div>
+    
         <!--
           <section id="blog">
             <h2>Blog</h2>
