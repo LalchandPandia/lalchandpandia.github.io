@@ -1,190 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- 83% allows portrait orientation to get the two-column format on an iPad (83% < 768/920) -->
-    <meta name="viewport" content="width=device-width,initial-scale=0.83">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lalchand Pandia | Data selection, continual learning, multi-agent systems</title>
+    <meta name="description" content="Lalchand Pandia, PhD student in computer science at the University of Chicago, working on data selection, continual learning, and multi-agent communication and evaluation.">
+
     <link rel="stylesheet" href="css/academicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Lalchand Pandia's Homepage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 
-    <script>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$','$$'], ['\\[', '\\]']],
-                processEscapes: true,
-                processEnvironments: true
-            },
-            options: {
-                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    <style>
+        :root {
+            --ink: #1c2030;
+            --muted: #5d6472;
+            --paper: #ffffff;
+            --panel: #f6f6f8;
+            --rule: #e2e4e9;
+            --accent: #7a1f2b;
+            --serif: "Newsreader", Georgia, serif;
+            --sans: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                color-scheme: dark;
+                --ink: #e7e8ed;
+                --muted: #a2a8b4;
+                --paper: #14161b;
+                --panel: #1b1e24;
+                --rule: #2c3039;
+                --accent: #e8909b;
             }
-        };
-        window.addEventListener('load', (event) => {
-            document.querySelectorAll("mjx-container").forEach(function(x){
-                x.parentElement.classList += 'has-jax'})
-        });
-    </script>
+        }
 
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 1.0625rem;
+            line-height: 1.6;
+        }
+        a { color: var(--accent); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+        a:hover { text-decoration-thickness: 2px; }
+        a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+        .container {
+            display: grid;
+            grid-template-columns: 15rem minmax(0, 42rem);
+            gap: 4rem;
+            justify-content: center;
+            padding: 4rem 2rem 5rem;
+        }
+
+        /* ---------- Left column ---------- */
+        .left-portion {
+            position: sticky;
+            top: 3rem;
+            align-self: start;
+        }
+        .image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            border-radius: 4px;
+            background: var(--panel);
+        }
+        .name {
+            margin: 1.25rem 0 0;
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.9rem;
+            line-height: 1.1;
+        }
+        .role { margin: 0.4rem 0 0; color: var(--muted); font-size: 0.98rem; line-height: 1.45; }
+        .profile-links {
+            margin: 1.25rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .profile-links li { margin: 0.3rem 0; }
+        .profile-links a { display: inline-flex; align-items: center; gap: 0.55rem; font-weight: 600; text-decoration: none; }
+        .profile-links a:hover span { text-decoration: underline; }
+        .profile-links i { width: 1.1rem; text-align: center; font-size: 1rem; }
+
+        /* ---------- Main column ---------- */
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.75rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid var(--rule);
+            font-weight: 600;
+        }
+        .tabs-nav a { color: var(--ink); text-decoration: none; }
+        .tabs-nav a:hover { color: var(--accent); }
+
+        section { margin-top: 2.75rem; scroll-margin-top: 1.5rem; }
+        h2 {
+            margin: 0 0 1rem;
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.55rem;
+            line-height: 1.2;
+        }
+        p { margin: 0 0 1rem; }
+
+        .lead {
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            line-height: 1.35;
+            font-weight: 500;
+            margin-bottom: 1.1rem;
+        }
+
+        /* News */
+        .news { margin: 0; padding: 0; list-style: none; }
+        .news li {
+            display: grid;
+            grid-template-columns: 5.5rem 1fr;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            border-top: 1px solid var(--rule);
+        }
+        .news li:last-child { border-bottom: 1px solid var(--rule); }
+        .news time { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+        /* Publications */
+        .pubs { margin: 0; padding: 0; list-style: none; }
+        .pubs li { margin-bottom: 1.5rem; }
+        .pub-title { display: block; font-weight: 600; line-height: 1.35; }
+        .authors { display: block; color: var(--muted); }
+        .authors strong { color: var(--ink); font-weight: 600; }
+        .pub-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.9rem; margin-top: 0.3rem; }
+        .venue {
+            display: inline-block;
+            padding: 0.05rem 0.55rem;
+            border: 1px solid var(--accent);
+            border-radius: 3px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .venue.workshop { border-color: var(--rule); color: var(--muted); }
+
+        /* Experience */
+        .jobs { margin: 0; padding: 0; list-style: none; }
+        .jobs > li { margin-bottom: 1.4rem; }
+        .job-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 1rem; }
+        .job-role { font-weight: 600; }
+        .job-dates { color: var(--muted); font-variant-numeric: tabular-nums; }
+        .job-org { display: block; color: var(--muted); }
+        .jobs ul { margin: 0.35rem 0 0; padding-left: 1.1rem; }
+        .jobs ul li { margin: 0.15rem 0; }
+
+        footer { margin-top: 3.5rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.9rem; }
+
+        /* ---------- Small screens ---------- */
+        @media (max-width: 52rem) {
+            .container { grid-template-columns: minmax(0, 42rem); gap: 2.5rem; padding: 2.5rem 1.25rem 4rem; }
+            .left-portion { position: static; display: grid; grid-template-columns: 8rem 1fr; gap: 0 1.25rem; align-items: start; }
+            .name { margin-top: 0; font-size: 1.7rem; }
+            .profile-links { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.2rem 1.25rem; }
+            .lead { font-size: 1.3rem; }
+            .news li { grid-template-columns: 1fr; gap: 0; }
+        }
+    </style>
 </head>
 
 <body>
-   <!-- <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#blog">Blog</a></li>
+<div class="container">
+
+    <aside class="left-portion">
+        <img class="image" src="docs/myimage.jpg" alt="Portrait of Lalchand Pandia">
+        <div>
+            <h1 class="name">Lalchand Pandia</h1>
+            <p class="role">PhD student in Computer Science, University of Chicago</p>
+        </div>
+        <ul class="profile-links">
+            <li><a href="mailto:lcpandia@uchicago.edu"><i class="fa-solid fa-envelope"></i><span>Email</span></a></li>
+            <li><a href="docs/LalchandPandiaIndustryCV.pdf"><i class="fa-solid fa-file-lines"></i><span>CV</span></a></li>
+            <li><a href="https://scholar.google.com/citations?user=HyIZ1okAAAAJ&hl=en"><i class="ai ai-google-scholar"></i><span>Google Scholar</span></a></li>
+            <li><a href="https://github.com/LalchandPandia"><i class="fab fa-github"></i><span>GitHub</span></a></li>
+            <li><a href="https://www.linkedin.com/in/lalchand-pandia-66a58556/"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a></li>
         </ul>
-      </nav>
-    -->
-	<div class="container">
-        <div class="left-portion">
-        	<div class="pic">
-                <img class="image" src =" docs/myimage.jpg" />
-            </div>
-            		<!--<a href = mailto:lcpandia@gmail.com>Email</a><br>-->
-            <p>
-                <a href = mailto:lcpandia@uchicago.edu>Email</a><br>	     
-                <a href ="docs/LalchandPandiaIndustryCV.pdf">CV</a>
-                <a href="https://scholar.google.com/citations?user=HyIZ1okAAAAJ&hl=en" style="margin:1em;"><i class="ai ai-google-scholar"></i>Google Scholar</a>              
-                <a href="https://github.com/LalchandPandia"> <i class="fab fa-github"></i>GitHub</a>
-                <a href="https://www.linkedin.com/in/lalchand-pandia-66a58556/"><i class="fab fa-linkedin"></i>LinkedIn</a>
-            </p>
-        </div>
-            
-        
-        <!--
-        <div class="bio" style='text-align:justify'>
-         		<p>
-                I am a PhD student in computer science at the University of Chicago. I am fortunate to be advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>
-                 </p> 
-                 <p> I also work closely with <a href="https://kanishka.website/"> Dr. Kanishka Misra.</a></p>
-                <p>My research focus is on data-efficiency for learning i.e. selecting the best small subsets of data for training which not only maintains accuracy but also covers data diversity. I also work on how new concepts are encoded in LLM during their training.</p>
-                <p>
-                    Prior to joining UChicago, I was a software engineer in the industry, focusing on Distributed File Systems.
-                </p>
-            	 <p>I did my Masters in Computer Science  from <a href="http://www.cse.iitk.ac.in/">IIT, Kanpur</a>. 
-                </p>
-                <h2>Publications</h2>
-                <ul>
-                    <li>SAFE-DRIFT: Data Selection for Supervised Fine-tuning with Controllable Off-Target Drifts</li>
-                    Accepted at Neurips 2026
-                    <li>Rethinking Data Selection: The Importance of Coverage over Difficulty in LLM Fine-Tuning</li>
-                    <a href="https://arxiv.org/abs/2611.07323">[pdf]</a> Accepted at DATA-FM workshop @ ICLR 2026
-                    <li>Sorting through the noise: Testing robustness of information processing in pre-trained language models</li>
-                    <a href ="https://arxiv.org/abs/2109.12393">[pdf]</a> Accepted at EMNLP 2021
-                    <li>Pragmatic competence of pre-trained language models through the lens of discourse connectives</li><a href="https://arxiv.org/abs/2109.12951">[pdf]</a> Accepted at CoNLL 2021
+    </aside>
 
-
-        </div>
-    -->
-    <div class="main-content">
-        <nav class="tabs-nav">
-            <a href="#" class="tab-link active" data-tab="about">About</a>
-            <a href="#" class="tab-link" data-tab="publications">Publications</a>
-            <a href="blog/index.html" class="tab-link" data-tab="blog">Blog</a>
+    <main class="main-content">
+        <nav class="tabs-nav" aria-label="Sections">
+            <a href="#about">About</a>
+            <a href="#news">News</a>
+            <a href="#publications">Publications</a>
+            <a href="#experience">Experience</a>
         </nav>
-        <div class="tab-content" id="about">
+
+        <section id="about">
             <h2>About</h2>
-            <p>I am a PhD student in computer science at the University of Chicago. I am fortunate to be advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>.</p>
-            <p>I also work closely with <a href="https://kanishka.website/">Dr. Kanishka Misra</a>.</p>
-            <p>My research focus is on data-efficiency for learning i.e. selecting the best small subsets of data for training which not only maintains accuracy but also covers data diversity. I also work on how new concepts are encoded in LLM during their training.</p>
-            <p>Prior to joining UChicago, I was a software engineer in the industry, focusing on Distributed File Systems.</p>
-            <p>I did my Masters in Computer Science from <a href="http://www.cse.iitk.ac.in/">IIT, Kanpur</a>.</p>
-        </div>
-        <!--<section id="about">
-            <h2>About</h2>
-            <p>
-                I am a PhD student in computer science at the University of Chicago. I am fortunate to be advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>
-                 </p> 
-                 <p> I also work closely with <a href="https://kanishka.website/"> Dr. Kanishka Misra.</a></p>
-                <p>My research focus is on data-efficiency for learning i.e. selecting the best small subsets of data for training which not only maintains accuracy but also covers data diversity. I also work on how new concepts are encoded in LLM during their training.</p>
-                <p>
-                    Prior to joining UChicago, I was a software engineer in the industry, focusing on Distributed File Systems.
-                </p>
-            	 <p>I did my Masters in Computer Science  from <a href="http://www.cse.iitk.ac.in/">IIT, Kanpur</a>. 
-                </p>
-          </section>
-        -->
-        <div class="tab-content" id="publications">
+            <p>I am a fifth-year PhD student in computer science at the University of Chicago, advised by <a href="https://aetting.github.io/">Dr. Allyson Ettinger</a>. I also work closely with <a href="https://donnate.github.io/">Dr. Claire Donnat</a> and <a href="https://kanishka.website/">Dr. Kanishka Misra</a>. I study how LLMs can learn over time and how LLM-based agents can work together.</p>
+            <p>My research spans data selection, continual learning, and multi-agent communication and evaluation. Two questions drive it: Which data should a model learn from, and how can it gain new capabilities without losing what it already knows? And when does communication help a group of agents solve a problem, and how should we evaluate that collaboration?</p>
+            <p>Before my PhD, I worked in industry on distributed file systems and data replication. I did my M.Tech. in Computer Science at <a href="http://www.cse.iitk.ac.in/">IIT Kanpur</a>.</p>
+            <p>I'm looking for industry research roles and am open to collaborations. Feel free to reach out at <a href="mailto:lcpandia@uchicago.edu">lcpandia@uchicago.edu</a>.</p>
+        </section>
+
+        <section id="news">
+            <h2>News</h2>
+            <!-- Add new items at the top. Talks, internships, and new preprints all fit here. -->
+            <ul class="news">
+                <li><time datetime="2026-12">Dec 2026</time><span>SAFE-DRIFT will appear at NeurIPS 2026.</span></li>
+                <li><time datetime="2026-04">Apr 2026</time><span>Presented &ldquo;Rethinking Data Selection&rdquo; at the Data Problems for Foundation Models workshop at ICLR 2026.</span></li>
+            </ul>
+        </section>
+
+        <section id="publications">
             <h2>Publications</h2>
-            <ul>
-            	<li>SAFE-DRIFT: Data Selection for Supervised Fine-tuning with Controllable Off-Target Drifts
-                    Accepted at Neurips 2026
+            <ul class="pubs">
+                <li>
+                    <span class="pub-title">SAFE-DRIFT: Data Selection for Supervised Fine-tuning with Controllable Off-Target Drifts</span>
+                    <span class="authors">Yeo Jin Jung, Yating Liu, <strong>Lalchand Pandia</strong>, Claire Donnat</span>
+                    <span class="pub-meta"><span class="venue">NeurIPS 2026</span><a href="docs/SAFE_DRIFT_Data_Selection.pdf">PDF</a></span>
                 </li>
-                <li>Rethinking Data Selection: The Importance of Coverage over Difficulty in LLM Fine-Tuning
-                    <a href="https://arxiv.org/abs/2611.07323">[pdf]</a> Accepted at DATA-FM workshop @ ICLR 2026
+                <li>
+                    <span class="pub-title">Rethinking Data Selection: The Importance of Coverage over Difficulty in Generative Fine-Tuning</span>
+                    <span class="authors"><strong>Lalchand Pandia</strong>, Kanishka Misra, Allyson Ettinger</span>
+                    <span class="pub-meta"><span class="venue workshop">DATA-FM Workshop, ICLR 2026</span><a href="https://arxiv.org/abs/2611.07323">PDF</a></span>
                 </li>
-                <li>Sorting through the noise: Testing robustness of information processing in pre-trained language models
-                    <a href="https://arxiv.org/abs/2109.12393">[pdf]</a> Accepted at EMNLP 2021
+                <li>
+                    <span class="pub-title">Sorting Through the Noise: Testing Robustness of Information Processing in Pre-trained Language Models</span>
+                    <span class="authors"><strong>Lalchand Pandia</strong>, Allyson Ettinger</span>
+                    <span class="pub-meta"><span class="venue">EMNLP 2021</span><a href="https://arxiv.org/abs/2109.12393">PDF</a></span>
                 </li>
-                <li>Pragmatic competence of pre-trained language models through the lens of discourse connectives
-                    <a href="https://arxiv.org/abs/2109.12951">[pdf]</a> Accepted at CoNLL 2021
+                <li>
+                    <span class="pub-title">Pragmatic Competence of Pre-trained Language Models through the Lens of Discourse Connectives</span>
+                    <span class="authors"><strong>Lalchand Pandia</strong>, Yan Cong, Allyson Ettinger</span>
+                    <span class="pub-meta"><span class="venue">CoNLL 2021</span><a href="https://arxiv.org/abs/2109.12951">PDF</a></span>
                 </li>
             </ul>
-        </div>
-        <!--<section id="publications">
-            <h2>Publications</h2>
-            <ul>
-                <li>Sorting through the noise: Testing robustness of information processing in pre-trained language models
-                    <a href ="https://arxiv.org/abs/2109.12393">[pdf]</a> Accepted at EMNLP 2021</li>
-                <li>Pragmatic competence of pre-trained language models through the lens of discourse connectives<a href="https://arxiv.org/abs/2109.12951">[pdf]</a> Accepted at CoNLL 2021
+        </section>
+
+        <section id="experience">
+            <h2>Industry experience</h2>
+            <ul class="jobs">
+                <li>
+                    <div class="job-head"><span class="job-role">System Architect</span><span class="job-dates">Dec 2018 – Jul 2022</span></div>
+                    <span class="job-org">Huawei Technologies</span>
+                    <ul>
+                        <li>Designed the replication module for the Huawei file system.</li>
+                        <li>Designed a distributed data manager for cross-cluster storage replication.</li>
+                    </ul>
                 </li>
+                <li>
+                    <div class="job-head"><span class="job-role">Member of Technical Staff II</span><span class="job-dates">Jul 2017 – Jul 2018</span></div>
+                    <span class="job-org">NetApp</span>
+                    <ul>
+                        <li>Built data-backup functionality for moving data from storage servers to backup devices.</li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="job-head"><span class="job-role">System Engineer</span><span class="job-dates">Dec 2012 – Jun 2015</span></div>
+                    <span class="job-org">Tata Consultancy Services</span>
+                    <ul>
+                        <li>Built Java client-server applications for insurance policy management.</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
 
-                </ul>
-          </section>
-        -->
-        <div class="tab-content" id="blog">
-            <h2>Blog</h2>
-            <p>Occasional posts about data-centric AI, learning dynamics, and model training.</p>
-            <article class="post-entry">   
-                <header class="entry-header">    
-                    <h2>Coverage</h2>  
-                </header>  
-                <footer class="entry-footer">Date: Nov 1, 2025  |  Estimated Reading Time: 10 min  |  Author: Lalchand Pandia</footer>
-                <a class="entry-link" aria-label="Data Coverage" href="blog/posts/data-coverage.html"></a>
-                <a class="entry-link" aria-label="post link to Data Coverage" href="blog/posts/data-coverage.html"></a>
-            </article>
-        </div>
-    
-        <!--
-          <section id="blog">
-            <h2>Blog</h2>
-            <p>Occasional posts about data-centric AI, learning dynamics, and model training.</p>
-          </section>
-        -->
-          
+        <footer>Last updated November 2026</footer>
+    </main>
 
-        </div>
-    
-        
-    </div>
-    <script>
-        const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        // Show About by default
-        document.getElementById('about').classList.add('active');
-        
-        tabLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-        
-                // deactivate all links
-                tabLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-        
-                // hide all content
-                tabContents.forEach(c => c.classList.remove('active'));
-        
-                // show selected content
-                const target = link.dataset.tab;
-                document.getElementById(target).classList.add('active');
-            });
-        });
-        </script>
-
+</div>
 </body>
 </html>
